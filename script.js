@@ -32,7 +32,7 @@
     function drawImages(background_image, player_image) {
         background_image.onload = () => {
             c.fillRect(0, 0, canvas.width, canvas.height)
-            c.drawImage(background_image, -1500, -650)
+            c.drawImage(background_image, -1640, -760)
             c.drawImage(player_image,
                 canvas.width/2 - player_image.width/2,
                 canvas.height/2 - player_image.height/2)
