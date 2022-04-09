@@ -3,7 +3,6 @@
     const c = canvas.getContext("2d")
 
     initialize()
-    animate()
 
     window.addEventListener('keydown', (event) => {
         let key = event.key
