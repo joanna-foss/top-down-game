@@ -31,11 +31,14 @@
     function resizeCanvas() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-        redraw()
+        animate()
     }
 
-    function redraw() {
-        loadImages()
+    function animate() {
+        if(true) {
+            window.requestAnimationFrame(animate)
+            loadImages()
+        }      
     }
 
     function loadImages() {
@@ -45,30 +48,39 @@
         const player_image = new Image()
         player_image.src = "./img/playerDown.png"
 
-        drawImages(town_image, player_image)
+        const background = new Background({
+            position: {
+                x: -1640,
+                y: -760
+            },
+            image: town_image
+        })
+
+        const player = new Sprite({
+            position: {
+                x: 0,
+                y: 0
+            },
+            image: player_image
+        })
+
+        drawImages(background, player)
     }
 
-    function drawImages(background_image, player_image) {
-        background_image.onload = () => {
+    function drawImages(img1, img2) {
+        img1.image.onload = () => {
             c.fillRect(0, 0, canvas.width, canvas.height)
-            c.drawImage(background_image, -1640, -760)
-            c.drawImage(player_image,
+            c.drawImage(img1.image, img1.position.x, img1.position.y)
+            c.drawImage(img2.image,
                 0,
                 0,
-                player_image.width/4,
-                player_image.height,
-                canvas.width/2 - (player_image.width/4)/2,
-                canvas.height/2 - (player_image.height/4)/2,
-                player_image.width/4,
-                player_image.height)
+                img2.image.width/4,
+                img2.image.height,
+                canvas.width/2 - (img2.image.width/4)/2,
+                canvas.height/2 - (img2.image.height/4)/2,
+                img2.image.width/4,
+                img2.image.height)
         }
-    }
-
-    function animate() {
-        if(true) {
-            window.requestAnimationFrame(animate)
-        }
-        console.log("animating")
     }
 
 })();
