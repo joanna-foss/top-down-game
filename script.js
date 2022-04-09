@@ -69,7 +69,9 @@
     function drawImages(img1, img2) {
         img1.image.onload = () => {
             c.fillRect(0, 0, canvas.width, canvas.height)
-            c.drawImage(img1.image, img1.position.x, img1.position.y)
+            c.drawImage(img1.image,
+                img1.position.x,
+                img1.position.y)
             c.drawImage(img2.image,
                 0,
                 0,
